@@ -15,9 +15,10 @@ const images = [
 
 const gallery = document.querySelector('#gallery');
 
-const galleryImages = images.forEach(image => {
-    const element = document.createElement('li');
-    element.textContent = image;
-    // gallery.insertAdjacentHTML("afterbegin", insertAdjacentHTML)
-  gallery.append(element)
-})
+images.forEach( ({url, alt})=>{
+  const list = document.createElement('li');
+  list.textContent = url;
+  
+});
+
+gallery.insertAdjacentElement("beforebegin", list)
