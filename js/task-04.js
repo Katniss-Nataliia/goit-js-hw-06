@@ -1,14 +1,14 @@
-const counter = document.querySelector('#counter');
-
-const decrease = counter.firstElementChild;
-const increase = counter.lastElementChild;
+const decreaseElm = document.querySelector('[data-action="decrement"]');
+const increaseElm = document.querySelector('[data-action="increment"]');
 const value = document.querySelector('#value');
 let counterValue = 0;
 
-decrease.addEventListener("click", ()=>{
-    value.textContent = counterValue - 1
+decreaseElm.addEventListener("click", ()=>{
+    counterValue-=1;
+    value.textContent = counterValue;
 });
 
-increase.addEventListener("click", ()=>{
-    value.textContent = counterValue + 1
+increaseElm.addEventListener("click", ()=>{
+    counterValue+=1;
+    value.textContent = counterValue;
 })
