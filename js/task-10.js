@@ -7,21 +7,35 @@ const inputNumber = document.querySelector("input");
 const createBtn = document.querySelector("[data-create]");
 const destroyBtn = document.querySelector("[data-destroy]");
 const boxes = document.querySelector("#boxes");
+let initialBoxSize = 10;
 
-// createBoxes(amount){
+createBtn.addEventListener("click", handleCreate);
+destroyBtn.addEventListener("click", handleDestroy);
 
-// }
 
+function handleCreate(){
+   const boxMarkUp = createBoxes(inputNumber.value);
+   boxes.append(...boxMarkUp);
+   inputNumber.value = "";
+}
 
-createBtn.addEventListener("click", () => {
-  const newElm = document.createElement("div");
-  newElm.style.width = "30px";
-  newElm.style.height = "30px";
-  newElm.style.backgroundColor = getRandomHexColor();
-  boxes.append(newElm);
-  
-})
+function createBoxes(amount){
+  let boxSize = 0;
+  const boxElm = [];
 
-// destroyBtn.addEventListener("click", () => {
-//   newElm.remove()
-// })
+  for (let i = 0; i<amount; i+=1){
+    boxSize=initialBoxSize + i * 10;
+    const box = document.createElement('div');
+    box.style.backgroundColor = getRandomHexColor();
+    box.style.width = boxSize + "px";
+    box.style.height = boxSize + "px";
+    boxElm.push(box)
+
+  }
+  return boxElm;
+}
+
+function handleDestroy (){
+  boxes.innerHTML = "";
+  initialBoxSize = 10;
+}
